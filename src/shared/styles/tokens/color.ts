@@ -48,7 +48,7 @@ export const color = {
   fbBrown02: '#FFFDF4',
 
   // Secondary color
-  bludeSave: '#0087EE',
+  blueSave: '#0087EE',
   redDelete: '#ED0505',
   redDeleteBg: '#FFDCDC',
 } as const;
