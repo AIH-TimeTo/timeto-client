@@ -5,6 +5,7 @@ import { themeVars } from '@shared/styles';
 export const folderItemBase = style({
   height: '7.6rem',
   padding: '1.5rem 2rem',
+  userSelect: 'none',
   WebkitUserSelect: 'none',
 });
 
@@ -49,16 +50,3 @@ export const taskCount = style({
   ...themeVars.fontStyles.body_12_medium,
   color: themeVars.color.gray600,
 });
-
-export const colorMap = {
-  RED01: style({ backgroundColor: themeVars.color.tbRed01 }),
-  RED02: style({ backgroundColor: themeVars.color.tbRed02 }),
-  PURPLE01: style({ backgroundColor: themeVars.color.tbPurple01 }),
-  PURPLE02: style({ backgroundColor: themeVars.color.tbPurple02 }),
-  GREEN01: style({ backgroundColor: themeVars.color.tbGreen01 }),
-  GREEN02: style({ backgroundColor: themeVars.color.tbGreen02 }),
-  BLUE01: style({ backgroundColor: themeVars.color.tbBlue01 }),
-  BLUE02: style({ backgroundColor: themeVars.color.tbBlue02 }),
-  BROWN01: style({ backgroundColor: themeVars.color.tbBrown01 }),
-  BROWN02: style({ backgroundColor: themeVars.color.tbBrown02 }),
-} as const;

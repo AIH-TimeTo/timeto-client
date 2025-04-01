@@ -42,16 +42,3 @@ export const folderListDragging = style({
   backgroundColor: themeVars.color.gray200,
   borderRadius: '1rem',
 });
-
-export const fontColorMap = {
-  RED01: style({ color: themeVars.color.gfRed01 }),
-  RED02: style({ color: themeVars.color.gfRed02 }),
-  PURPLE01: style({ color: themeVars.color.gfPurple01 }),
-  PURPLE02: style({ color: themeVars.color.gfPurple02 }),
-  BLUE01: style({ color: themeVars.color.gfBlue01 }),
-  BLUE02: style({ color: themeVars.color.gfBlue02 }),
-  GREEN01: style({ color: themeVars.color.gfGreen01 }),
-  GREEN02: style({ color: themeVars.color.gfGreen02 }),
-  BROWN01: style({ color: themeVars.color.gfBrown01 }),
-  BROWN02: style({ color: themeVars.color.gfBrown02 }),
-} as const;
