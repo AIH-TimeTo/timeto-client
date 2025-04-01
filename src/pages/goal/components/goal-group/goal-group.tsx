@@ -16,6 +16,7 @@ import {
 import { clsx } from 'clsx';
 
 import { IcCommonKebab, IcGoalPinFill } from '@shared/assets/svgs';
+import { usePreventScrollWhileDragging } from '@shared/hooks/use-prevent-scroll-while-dragging';
 
 import { Folder, FolderColorType } from '../../types/goal';
 import FolderItem from '../folder-item/folder-item';
@@ -41,11 +42,13 @@ export default function GoalGroup({
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        delay: 200,
+        delay: 300,
         tolerance: 5,
       },
     }),
   );
+
+  usePreventScrollWhileDragging(isDragging);
 
   const handleDragEnd = ({ active, over }: DragEndEvent) => {
     if (active.id !== over?.id) {
