@@ -30,8 +30,8 @@ export const color = {
 
   gfRed02: '#A3686E',
   gfPurple02: '#7A72AC',
-  gfGreen02: '#3F6CA2',
-  gfGreen03: '#629475',
+  gfBlue02: '#3F6CA2',
+  gfGreen02: '#629475',
   gfBrown02: '#A67858',
 
   // Folder BG Color
@@ -48,7 +48,7 @@ export const color = {
   fbBrown02: '#FFFDF4',
 
   // Secondary color
-  bludeSave: '#0087EE',
+  blueSave: '#0087EE',
   redDelete: '#ED0505',
   redDeleteBg: '#FFDCDC',
 } as const;

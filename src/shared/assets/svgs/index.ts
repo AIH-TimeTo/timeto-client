@@ -1,0 +1,11 @@
+export { default as IcCommonBack } from './IcCommonBack';
+export { default as IcCommonCalendar } from './IcCommonCalendar';
+export { default as IcCommonFolder } from './IcCommonFolder';
+export { default as IcCommonHamburger } from './IcCommonHamburger';
+export { default as IcCommonHamburger24 } from './IcCommonHamburger24';
+export { default as IcCommonKebab } from './IcCommonKebab';
+export { default as IcCommonPlus } from './IcCommonPlus';
+export { default as IcGoalHamburger20 } from './IcGoalHamburger20';
+export { default as IcGoalPinDefault24 } from './IcGoalPinDefault24';
+export { default as IcGoalPinFill } from './IcGoalPinFill';
+export { default as IcPaletteCheck } from './IcPaletteCheck';
