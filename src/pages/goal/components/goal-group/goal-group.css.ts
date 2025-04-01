@@ -35,7 +35,18 @@ export const folderList = style({
   display: 'flex',
   flexDirection: 'column',
   boxShadow: '0px 0px 12px 0px rgba(0, 0, 0, 0.04)',
+  backgroundColor: themeVars.color.gray200,
+  borderRadius: '1rem',
 });
+
+export const folderListDragging = style({
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: themeVars.color.gray200,
+  borderRadius: '1rem',
+  // boxShadow 제거됨!
+});
+
 
 export const fontColorMap = {
   RED01: style({ color: themeVars.color.gfRed01 }),

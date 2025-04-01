@@ -4,6 +4,8 @@ import { themeVars } from '@shared/styles';
 export const folderItemBase = style({
   height: '7.6rem',
   padding: '1.5rem 2rem',
+  userSelect: 'none',
+  WebkitUserSelect: 'none',
 });
 
 export const only = style({

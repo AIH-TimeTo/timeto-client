@@ -1,14 +1,17 @@
 import { clsx } from 'clsx';
 import * as styles from './folder-item.css';
 import { IcGoalHamburger20 } from '@shared/assets/svgs';
+import { HTMLAttributes } from 'react';
 
-interface FolderItemProps {
+export interface FolderItemProps {
   folderName: string;
   taskCount: number;
   color: keyof typeof styles.colorMap;
   isFirst?: boolean;
   isLast?: boolean;
   isOnly?: boolean;
+  isOverlay?: boolean;
+  dragHandleProps?: HTMLAttributes<HTMLDivElement>;
 }
 
 export default function FolderItem({
@@ -18,9 +21,11 @@ export default function FolderItem({
   isFirst = false,
   isLast = false,
   isOnly = false,
+  dragHandleProps,
 }: FolderItemProps) {
   return (
     <div
+      {...dragHandleProps}
       className={clsx(
         styles.folderItemBase,
         styles.colorMap[color],
@@ -31,7 +36,7 @@ export default function FolderItem({
       )}
     >
       <div className={styles.row}>
-        <div className={styles.hamburger}>
+        <div className={styles.hamburger} style={{ touchAction: 'none' }}>
           <IcGoalHamburger20 width={20} height={20} />
         </div>
         <div className={styles.textGroup}>
