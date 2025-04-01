@@ -27,8 +27,7 @@ export const divider = style({
 });
 
 export const row = style({
-  display: 'flex',
-  alignItems: 'center',
+  ...themeVars.display.flexAlignCenter,
   gap: '1rem',
 });
 
@@ -38,8 +37,7 @@ export const hamburger = style({
 });
 
 export const textGroup = style({
-  display: 'flex',
-  flexDirection: 'column',
+  ...themeVars.display.flexColumn,
   gap: '0.9rem',
 });
 

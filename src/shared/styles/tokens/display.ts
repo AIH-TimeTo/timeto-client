@@ -3,4 +3,8 @@ export const display = {
     display: 'flex',
     alignItems: 'center',
   },
+  flexColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
 } as const;
