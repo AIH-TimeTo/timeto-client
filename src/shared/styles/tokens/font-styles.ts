@@ -2,51 +2,51 @@ import { typography } from './typography';
 
 export const fontStyles = {
   // Headline
-  headline_lg_b: {
+  head_24_bold: {
     fontSize: typography.fontSize.headlineLg,
     fontWeight: typography.fontWeight.bold,
     lineHeight: typography.lineHeight.default,
   },
-  headline_md_b: {
+  head_20_bold: {
     fontSize: typography.fontSize.headlineMd,
     fontWeight: typography.fontWeight.bold,
     lineHeight: typography.lineHeight.default,
   },
-  headline_md_sb: {
+  head_20_semibold: {
     fontSize: typography.fontSize.headlineMd,
     fontWeight: typography.fontWeight.semiBold,
     lineHeight: typography.lineHeight.default,
   },
 
   // Title / Button
-  title_sm_sb: {
+  title_16_semibold: {
     fontSize: typography.fontSize.titleSm,
     fontWeight: typography.fontWeight.semiBold,
     lineHeight: typography.lineHeight.default,
   },
-  title_sm_m: {
+  title_16_medium: {
     fontSize: typography.fontSize.titleSm,
     fontWeight: typography.fontWeight.medium,
     lineHeight: typography.lineHeight.default,
   },
 
   // Body
-  body_lg_sb: {
+  body_14_semibold: {
     fontSize: typography.fontSize.bodyLg,
     fontWeight: typography.fontWeight.semiBold,
     lineHeight: typography.lineHeight.default,
   },
-  body_md_m: {
+  body_14_medium: {
     fontSize: typography.fontSize.bodyMd,
     fontWeight: typography.fontWeight.medium,
     lineHeight: typography.lineHeight.default,
   },
-  body_tiny_m: {
+  body_12_medium: {
     fontSize: typography.fontSize.bodyTiny,
     fontWeight: typography.fontWeight.medium,
     lineHeight: typography.lineHeight.default,
   },
-  body_tiny_s_m: {
+  body_10_medium: {
     fontSize: typography.fontSize.bodyTinySmall,
     fontWeight: typography.fontWeight.medium,
     lineHeight: typography.lineHeight.default,
