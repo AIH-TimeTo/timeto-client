@@ -1,4 +1,5 @@
 import { globalStyle, style } from '@vanilla-extract/css';
+
 import { themeVars } from './theme.css';
 
 /* CSS Variables */
@@ -30,8 +31,8 @@ globalStyle('::-webkit-scrollbar', {
   display: 'none',
 });
 
-globalStyle("*", {
-  pointerEvents: "auto",
+globalStyle('*', {
+  pointerEvents: 'auto',
 });
 
 export const rootStyle = style({

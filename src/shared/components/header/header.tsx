@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import * as styles from './header.css';
 
 interface HeaderProps {
@@ -7,7 +8,11 @@ interface HeaderProps {
   rightSlot?: ReactNode;
 }
 
-export default function Header({ leftSlot, centerSlot, rightSlot }: HeaderProps) {
+export default function Header({
+  leftSlot,
+  centerSlot,
+  rightSlot,
+}: HeaderProps) {
   return (
     <header className={styles.headerWrapper}>
       <div className={styles.left}>{leftSlot}</div>

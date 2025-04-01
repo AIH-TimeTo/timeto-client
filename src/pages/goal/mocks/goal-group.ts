@@ -39,4 +39,35 @@ export const mockGoalGroups: GoalGroup[] = [
       },
     ],
   },
+  {
+    id: 4,
+    goalName: '사이드 프로젝트',
+    color: 'PURPLE01',
+    folders: [
+      {
+        id: 5,
+        folderName: '기획 정리',
+        taskCount: 2,
+        color: 'PURPLE01',
+      },
+      {
+        id: 6,
+        folderName: '기획 정리',
+        taskCount: 2,
+        color: 'PURPLE01',
+      },
+      {
+        id: 7,
+        folderName: '기획 정리',
+        taskCount: 2,
+        color: 'PURPLE01',
+      },
+      {
+        id: 8,
+        folderName: '기획 정리',
+        taskCount: 2,
+        color: 'PURPLE01',
+      },
+    ],
+  },
 ];

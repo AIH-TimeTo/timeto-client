@@ -1,7 +1,8 @@
+import type { CSSProperties } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+
 import FolderItem, { FolderItemProps } from '../folder-item/folder-item';
-import type { CSSProperties } from 'react';
 
 interface SortableFolderItemProps extends FolderItemProps {
   id: string;

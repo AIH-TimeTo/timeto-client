@@ -1,3 +1,17 @@
-import type { SVGProps } from "react";
-const SvgIcCommonPlus = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" {...props}><path fill="#000" fillRule="evenodd" d="M11.227 19.98c0 .401.346.735.773.746s.773-.305.773-.706v-7.27H20a.75.75 0 0 0 0-1.5h-7.227V4.02c0-.4-.346-.734-.773-.745s-.773.305-.773.705v7.27H4a.75.75 0 0 0 0 1.5h7.227z" clipRule="evenodd" /></svg>;
+import type { SVGProps } from 'react';
+const SvgIcCommonPlus = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    {...props}
+  >
+    <path
+      fill="#000"
+      fillRule="evenodd"
+      d="M11.227 19.98c0 .401.346.735.773.746s.773-.305.773-.706v-7.27H20a.75.75 0 0 0 0-1.5h-7.227V4.02c0-.4-.346-.734-.773-.745s-.773.305-.773.705v7.27H4a.75.75 0 0 0 0 1.5h7.227z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
 export default SvgIcCommonPlus;

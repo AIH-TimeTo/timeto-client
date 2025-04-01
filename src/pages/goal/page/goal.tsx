@@ -1,7 +1,9 @@
-import Header from '@shared/components/header/header';
 import { IcCommonHamburger24, IcCommonPlus } from '@shared/assets/svgs/index';
+import Header from '@shared/components/header/header';
+
 import GoalGroup from '../components/goal-group/goal-group';
 import { mockGoalGroups } from '../mocks/goal-group';
+
 import * as styles from './goal.css';
 
 export default function GoalPage() {

@@ -1,7 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { GoalPage } from './lazy';
-import GlobalLayout from './global-layout'
+
 import { routePath } from '@shared/constants/path';
+
+import GlobalLayout from './global-layout';
+import { GoalPage } from './lazy';
 
 export default function Router() {
   return (

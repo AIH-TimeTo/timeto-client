@@ -1,24 +1,27 @@
 import { useState } from 'react';
 import {
-  DndContext,
-  DragOverlay,
   closestCenter,
+  DndContext,
   type DragEndEvent,
+  DragOverlay,
+  PointerSensor,
   useSensor,
   useSensors,
-  PointerSensor,
 } from '@dnd-kit/core';
 import {
+  arrayMove,
   SortableContext,
   verticalListSortingStrategy,
-  arrayMove,
 } from '@dnd-kit/sortable';
-import SortableFolderItem from '../sortable-folder-item/sortable-folder-item';
-import FolderItem from '../folder-item/folder-item';
-import * as styles from './goal-group.css';
-import { IcGoalPinFill, IcCommonKebab } from '@shared/assets/svgs';
-import { FolderColorType, Folder } from '../../types/goal';
 import { clsx } from 'clsx';
+
+import { IcCommonKebab, IcGoalPinFill } from '@shared/assets/svgs';
+
+import { Folder, FolderColorType } from '../../types/goal';
+import FolderItem from '../folder-item/folder-item';
+import SortableFolderItem from '../sortable-folder-item/sortable-folder-item';
+
+import * as styles from './goal-group.css';
 
 interface GoalGroupProps {
   goalName: string;

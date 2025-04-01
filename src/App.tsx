@@ -1,7 +1,8 @@
-import ThemeProvider from '@shared/styles/themeProvider';
 import { BrowserRouter } from 'react-router-dom';
+
 import Router from '@shared/router/router';
 import { rootStyle } from '@shared/styles';
+import ThemeProvider from '@shared/styles/themeProvider';
 
 function App() {
   return (

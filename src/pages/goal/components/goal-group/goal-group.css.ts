@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+
 import { themeVars } from '@shared/styles';
 
 export const goalGroupWrapper = style({
@@ -44,9 +45,7 @@ export const folderListDragging = style({
   flexDirection: 'column',
   backgroundColor: themeVars.color.gray200,
   borderRadius: '1rem',
-  // boxShadow 제거됨!
 });
-
 
 export const fontColorMap = {
   RED01: style({ color: themeVars.color.gfRed01 }),

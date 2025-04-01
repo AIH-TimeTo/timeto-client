@@ -1,7 +1,9 @@
-import { clsx } from 'clsx';
-import * as styles from './folder-item.css';
-import { IcGoalHamburger20 } from '@shared/assets/svgs';
 import { HTMLAttributes } from 'react';
+import { clsx } from 'clsx';
+
+import { IcGoalHamburger20 } from '@shared/assets/svgs';
+
+import * as styles from './folder-item.css';
 
 export interface FolderItemProps {
   folderName: string;
