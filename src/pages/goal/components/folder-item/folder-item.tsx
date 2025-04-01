@@ -2,13 +2,14 @@ import { HTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 
 import { IcGoalHamburger20 } from '@shared/assets/svgs';
+import { tbColorMap } from '@shared/utils/color-map';
 
 import * as styles from './folder-item.css';
 
 export interface FolderItemProps {
   folderName: string;
   taskCount: number;
-  color: keyof typeof styles.colorMap;
+  color: keyof typeof tbColorMap;
   isFirst?: boolean;
   isLast?: boolean;
   isOnly?: boolean;
@@ -30,12 +31,12 @@ export default function FolderItem({
       {...dragHandleProps}
       className={clsx(
         styles.folderItemBase,
-        styles.colorMap[color],
         isOnly && styles.only,
         isFirst && !isOnly && styles.first,
         isLast && !isOnly && styles.last,
         !isFirst && !isOnly && styles.divider,
       )}
+      style={{ backgroundColor: tbColorMap[color] }}
     >
       <div className={styles.row}>
         <div className={styles.hamburger} style={{ touchAction: 'none' }}>

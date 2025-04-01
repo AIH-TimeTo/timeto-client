@@ -17,6 +17,7 @@ import { clsx } from 'clsx';
 
 import { IcCommonKebab, IcGoalPinFill } from '@shared/assets/svgs';
 import { usePreventScrollWhileDragging } from '@shared/hooks/use-prevent-scroll-while-dragging';
+import { gfColorMap } from '@shared/utils/color-map';
 
 import { Folder, FolderColorType } from '../../types/goal';
 import FolderItem from '../folder-item/folder-item';
@@ -67,7 +68,7 @@ export default function GoalGroup({
           <IcGoalPinFill
             width={24}
             height={24}
-            className={styles.fontColorMap[color]}
+            style={{ color: gfColorMap[color] }}
           />
           <h2 className={styles.title}>{goalName}</h2>
         </div>
