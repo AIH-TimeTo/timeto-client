@@ -1,4 +1,3 @@
-// @shared/hooks/use-prevent-scroll-while-dragging.ts
 import { useEffect } from 'react';
 
 export const usePreventScrollWhileDragging = (isDragging: boolean) => {
