@@ -7,7 +7,7 @@ const SvgIcCommonBack = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      stroke="#000"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeWidth={1.5}
       d="m14.73 5-6.603 7.134 6.414 7.703"
