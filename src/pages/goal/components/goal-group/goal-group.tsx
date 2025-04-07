@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   closestCenter,
   DndContext,
@@ -39,6 +39,10 @@ export default function GoalGroup({
   const [items, setItems] = useState(folders);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+
+  useEffect(() => {
+    setItems(folders);
+  }, [folders]);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
