@@ -1,14 +1,6 @@
-export type FolderColorType =
-  | 'RED01'
-  | 'RED02'
-  | 'PURPLE01'
-  | 'PURPLE02'
-  | 'BLUE01'
-  | 'BLUE02'
-  | 'GREEN01'
-  | 'GREEN02'
-  | 'BROWN01'
-  | 'BROWN02';
+import type { GfColorKey } from '@shared/utils/color-map';
+
+export type FolderColorType = GfColorKey;
 
 export interface Folder {
   id: number;
