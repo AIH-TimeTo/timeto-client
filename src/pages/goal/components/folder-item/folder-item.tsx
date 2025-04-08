@@ -15,6 +15,7 @@ export interface FolderItemProps {
   isOnly?: boolean;
   isOverlay?: boolean;
   dragHandleProps?: HTMLAttributes<HTMLDivElement>;
+  onClick?: () => void;
 }
 
 export default function FolderItem({
@@ -25,6 +26,7 @@ export default function FolderItem({
   isLast = false,
   isOnly = false,
   dragHandleProps,
+  onClick,
 }: FolderItemProps) {
   return (
     <div
@@ -37,6 +39,7 @@ export default function FolderItem({
         !isFirst && !isOnly && styles.divider,
       )}
       style={{ backgroundColor: tbColorMap[color] }}
+      onClick={onClick}
     >
       <div className={styles.row}>
         <div className={styles.hamburger} style={{ touchAction: 'none' }}>

@@ -28,8 +28,11 @@ export default function SortableFolderItem({
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <FolderItem {...props} />
+    <div ref={setNodeRef} style={style}>
+      <FolderItem
+        {...props}
+        dragHandleProps={{ ...attributes, ...listeners }}
+      />
     </div>
   );
 }

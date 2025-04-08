@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   closestCenter,
   DndContext,
@@ -53,6 +54,8 @@ export default function GoalGroup({
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [selectedColor, setSelectedColor] = useState<FolderColorType>(color);
+
+  const navigate = useNavigate();
 
   const {
     modalStep,
@@ -181,6 +184,7 @@ export default function GoalGroup({
                 isOnly={items.length === 1}
                 isFirst={index === 0}
                 isLast={index === items.length - 1}
+                onClick={() => navigate(`/folder/${folder.id}`)}
               />
             ))}
           </div>
