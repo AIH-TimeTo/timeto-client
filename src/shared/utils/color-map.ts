@@ -26,5 +26,19 @@ export const gfColorMap = {
   BROWN02: themeVars.color.gfBrown02,
 } as const;
 
+export const fbColorMap = {
+  RED01: themeVars.color.fbRed01,
+  RED02: themeVars.color.fbRed02,
+  PURPLE01: themeVars.color.fbPurple01,
+  PURPLE02: themeVars.color.fbPurple02,
+  GREEN01: themeVars.color.fbGreen01,
+  GREEN02: themeVars.color.fbGreen02,
+  BLUE01: themeVars.color.fbBlue01,
+  BLUE02: themeVars.color.fbBlue02,
+  BROWN01: themeVars.color.fbBrown01,
+  BROWN02: themeVars.color.fbBrown02,
+} as const;
+
 export type TbColorKey = keyof typeof tbColorMap;
 export type GfColorKey = keyof typeof gfColorMap;
+export type FbColorKey = keyof typeof fbColorMap;
