@@ -107,7 +107,7 @@ export default function GoalPage() {
               openModal('list');
             }}
             items={mappedGoals.map((goal) => ({
-              id: goal.id.toString(),
+              id: goal.goalId.toString(),
               label: goal.goalName,
               leftIcon: (
                 <IcGoalPinFill
@@ -119,9 +119,9 @@ export default function GoalPage() {
               showRightArrow: true,
             }))}
             onItemClick={(id) => {
-              const selected = mappedGoals.find((g) => g.id === Number(id));
+              const selected = mappedGoals.find((g) => g.goalId === Number(id));
               if (selected) {
-                selectGoal(selected.id, selected.goalName);
+                selectGoal(selected.goalId, selected.goalName);
               }
             }}
           />
@@ -174,6 +174,7 @@ export default function GoalPage() {
         {mappedGoals.map((group) => (
           <GoalGroup
             key={group.goalName}
+            goalId={group.goalId}
             goalName={group.goalName}
             color={group.color}
             folders={group.folders}

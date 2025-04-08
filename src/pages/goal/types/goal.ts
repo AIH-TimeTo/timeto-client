@@ -10,7 +10,7 @@ export interface Folder {
 }
 
 export interface GoalGroup {
-  id: number;
+  goalId: number;
   goalName: string;
   color: FolderColorType;
   folders: Folder[];

@@ -2,7 +2,7 @@ import { FolderColorType } from '@pages/goal/types/goal';
 import { GoalListResponse } from '@shared/types/goal-response';
 
 interface Goal {
-  id: number;
+  goalId: number;
   goalName: string;
   color: FolderColorType;
   folders: {
@@ -17,7 +17,7 @@ export const mapGoalResponse = (
   response: GoalListResponse['data']['goalsFoldersList'],
 ): Goal[] => {
   return response.map((goal) => ({
-    id: goal.goalId,
+    goalId: goal.goalId,
     goalName: goal.goalName,
     color: goal.color as FolderColorType,
     folders: (goal.folderInfoList ?? []).map((folder) => ({
