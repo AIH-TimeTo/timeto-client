@@ -55,7 +55,14 @@ export default function McList({
               : styles.item;
 
           return (
-            <li key={id} className={itemClass} onClick={() => onItemClick(id)}>
+            <li
+              key={id}
+              className={itemClass}
+              onClick={(e) => {
+                e.stopPropagation(); // ✅ 이벤트 전파 방지!
+                onItemClick(id);
+              }}
+            >
               {leftIcon && <div className={styles.leftIcon}>{leftIcon}</div>}
               <span className={styles.label}>{label}</span>
               {showRightArrow && (

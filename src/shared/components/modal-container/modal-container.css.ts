@@ -15,10 +15,12 @@ export const backdrop = style({
 });
 
 export const container = style({
-  width: 'calc(100% - 40px)',
+  ...themeVars.display.flexColumn,
+  width: 'calc(100% - 4rem)',
   maxWidth: '36rem',
   height: '36rem',
   backgroundColor: themeVars.color.gray200,
   borderRadius: '1rem',
   padding: '2.8rem 2rem 3.2rem 2rem',
+  overflow: 'hidden',
 });
