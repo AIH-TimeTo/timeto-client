@@ -17,3 +17,16 @@ export const apiPost = async <TResponse, TBody = undefined>(
   const response = await axiosInstance.post<TResponse>(url, body);
   return response.data;
 };
+
+export const apiPatch = async <TResponse, TBody = undefined>(
+  url: string,
+  body?: TBody,
+): Promise<TResponse> => {
+  const response = await axiosInstance.patch<TResponse>(url, body);
+  return response.data;
+};
+
+export const apiDelete = async <TResponse>(url: string): Promise<TResponse> => {
+  const response = await axiosInstance.delete<TResponse>(url);
+  return response.data;
+};

@@ -30,3 +30,35 @@ export interface CreateGoalResponse {
     color: string;
   };
 }
+
+export interface EditGoalNameResponse {
+  status: string;
+  code: string;
+  message: string;
+  data: {
+    goalId: number;
+    goalName: string;
+  };
+}
+
+export interface EditGoalColorResponse {
+  status: string;
+  code: string;
+  message: string;
+  data: {
+    goalId: number;
+    color: string;
+  };
+}
+
+export interface DeleteGoalResponse {
+  status: string;
+  code: string;
+  message: string;
+  data: {
+    goalId: number;
+    deletedFolderIds: number[];
+    deletedTaskIds: number[];
+    deletedTimeBlockIds: number[];
+  };
+}
