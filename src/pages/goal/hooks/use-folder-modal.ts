@@ -29,6 +29,13 @@ export function useFolderModal() {
     setModalType('input-folder');
   };
 
+  const resetFolderModal = () => {
+    setModalType(null);
+    setFolderName('');
+    setSelectedGoalId(null);
+    setSelectedGoalName('');
+  };
+
   return {
     modalType,
     folderName,
@@ -39,5 +46,6 @@ export function useFolderModal() {
     goBack,
     setFolderName,
     selectGoal,
+    resetFolderModal,
   };
 }

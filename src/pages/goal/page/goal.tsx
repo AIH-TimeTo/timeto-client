@@ -12,6 +12,7 @@ import McInput from '@shared/components/mc-input/mc-input';
 import McList from '@shared/components/mc-list/mc-list';
 import { ModalContainer } from '@shared/components/modal-container/modal-container';
 import { gfColorMap } from '@shared/utils/color-map';
+import { truncateText } from '@shared/utils/truncate-text';
 
 import AddGoalFlow from '../components/add-goal-flow/add-goal-flow';
 import GoalGroup from '../components/goal-group/goal-group';
@@ -44,6 +45,7 @@ export default function GoalPage() {
     closeModal: closeFolderModal,
     goBack: goBackFolder,
     selectGoal,
+    resetFolderModal,
   } = useFolderModal();
 
   const { data } = useQuery(GOAL_QUERY_OPTION.LIST());
@@ -99,6 +101,11 @@ export default function GoalPage() {
         <ModalContainer onClose={closeFolderModal}>
           <McList
             title="새로 폴더 추가하기"
+            showBackButton={true}
+            onBack={() => {
+              resetFolderModal();
+              openModal('list');
+            }}
             items={mappedGoals.map((goal) => ({
               id: goal.id.toString(),
               label: goal.goalName,
@@ -130,7 +137,7 @@ export default function GoalPage() {
       return (
         <ModalContainer onClose={closeFolderModal}>
           <McInput
-            title={`'${selectedGoalName}'에 폴더 추가하기`}
+            title={`'${truncateText(selectedGoalName, 10)}'에 폴더 추가하기`}
             placeholder="폴더 이름을 입력하세요"
             confirmText="저장"
             showBackButton
