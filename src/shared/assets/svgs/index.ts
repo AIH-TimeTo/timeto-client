@@ -8,6 +8,8 @@ export { default as IcCommonKebab } from './IcCommonKebab';
 export { default as IcCommonPalette } from './IcCommonPalette';
 export { default as IcCommonPlus } from './IcCommonPlus';
 export { default as IcCommonRename } from './IcCommonRename';
+export { default as IcFolderComplete } from './IcFolderComplete';
+export { default as IcFolderProgress } from './IcFolderProgress';
 export { default as IcGoalHamburger20 } from './IcGoalHamburger20';
 export { default as IcGoalPinDefault24 } from './IcGoalPinDefault24';
 export { default as IcGoalPinFill } from './IcGoalPinFill';
