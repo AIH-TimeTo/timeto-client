@@ -9,6 +9,7 @@ interface ListModalItem {
   label: string;
   leftIcon?: ReactNode;
   showRightArrow?: boolean;
+  labelColor?: string;
 }
 
 interface McListProps {
@@ -45,34 +46,41 @@ export default function McList({
       )}
 
       <ul className={styles.list}>
-        {items.map(({ id, label, leftIcon, showRightArrow }, index) => {
-          const isFirst = index === 0;
-          const isLast = index === items.length - 1;
-          const itemClass = isFirst
-            ? styles.itemTop
-            : isLast
-              ? styles.itemBottom
-              : styles.item;
+        {items.map(
+          ({ id, label, leftIcon, showRightArrow, labelColor }, index) => {
+            const isFirst = index === 0;
+            const isLast = index === items.length - 1;
+            const itemClass = isFirst
+              ? styles.itemTop
+              : isLast
+                ? styles.itemBottom
+                : styles.item;
 
-          return (
-            <li
-              key={id}
-              className={itemClass}
-              onClick={(e) => {
-                e.stopPropagation(); // ✅ 이벤트 전파 방지!
-                onItemClick(id);
-              }}
-            >
-              {leftIcon && <div className={styles.leftIcon}>{leftIcon}</div>}
-              <span className={styles.label}>{label}</span>
-              {showRightArrow && (
-                <div className={styles.rightIcon}>
-                  <IcCommonBack width={20} className={styles.rightArrow} />
-                </div>
-              )}
-            </li>
-          );
-        })}
+            return (
+              <li
+                key={id}
+                className={itemClass}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onItemClick(id);
+                }}
+              >
+                {leftIcon && <div className={styles.leftIcon}>{leftIcon}</div>}
+                <span
+                  className={styles.label}
+                  style={{ color: labelColor ?? undefined }}
+                >
+                  {label}
+                </span>
+                {showRightArrow && (
+                  <div className={styles.rightIcon}>
+                    <IcCommonBack width={20} className={styles.rightArrow} />
+                  </div>
+                )}
+              </li>
+            );
+          },
+        )}
       </ul>
     </div>
   );
