@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { IcCommonBack } from '@shared/assets/svgs';
 
@@ -11,6 +11,7 @@ interface McInputProps {
   showBackButton?: boolean;
   onBack?: () => void;
   onConfirm: (value: string) => void;
+  defaultValue?: string;
 }
 
 export default function McInput({
@@ -20,8 +21,13 @@ export default function McInput({
   showBackButton = false,
   onBack,
   onConfirm,
+  defaultValue = '',
 }: McInputProps) {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(defaultValue);
+
+  useEffect(() => {
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   const handleConfirm = () => {
     if (value.trim()) {
@@ -36,7 +42,7 @@ export default function McInput({
       <header className={styles.header}>
         {showBackButton && (
           <button className={styles.backButton} onClick={onBack}>
-            <IcCommonBack width={24} height={24} />
+            <IcCommonBack width={24} />
           </button>
         )}
         <h2 className={styles.title}>{title}</h2>

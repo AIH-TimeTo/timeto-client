@@ -25,3 +25,6 @@ export const gfColorMap = {
   BROWN01: themeVars.color.gfBrown01,
   BROWN02: themeVars.color.gfBrown02,
 } as const;
+
+export type TbColorKey = keyof typeof tbColorMap;
+export type GfColorKey = keyof typeof gfColorMap;

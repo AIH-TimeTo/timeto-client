@@ -2,7 +2,7 @@ import type { GoalGroup } from '../types/goal';
 
 export const mockGoalGroups: GoalGroup[] = [
   {
-    id: 1,
+    goalId: 1,
     goalName: '광고학 강의 레포트',
     color: 'GREEN01',
     folders: [
@@ -27,7 +27,7 @@ export const mockGoalGroups: GoalGroup[] = [
     ],
   },
   {
-    id: 2,
+    goalId: 2,
     goalName: '사이드 프로젝트',
     color: 'RED01',
     folders: [
@@ -40,7 +40,7 @@ export const mockGoalGroups: GoalGroup[] = [
     ],
   },
   {
-    id: 4,
+    goalId: 4,
     goalName: '사이드 프로젝트',
     color: 'PURPLE01',
     folders: [

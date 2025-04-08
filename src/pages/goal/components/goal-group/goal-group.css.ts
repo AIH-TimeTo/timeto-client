@@ -3,12 +3,10 @@ import { style } from '@vanilla-extract/css';
 import { themeVars } from '@shared/styles';
 
 export const goalGroupWrapper = style({
-  display: 'flex',
-  flexDirection: 'column',
+  ...themeVars.display.flexColumn,
   gap: '2.7rem',
   marginBottom: '4.9rem',
-  paddingLeft: '2rem',
-  paddingRight: '2rem',
+  padding: '0 2rem',
   marginTop: '3.2rem',
 });
 

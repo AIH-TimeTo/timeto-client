@@ -3,22 +3,21 @@ import { style } from '@vanilla-extract/css';
 import { themeVars } from '@shared/styles';
 
 export const wrapper = style({
-  display: 'flex',
-  flexDirection: 'column',
+  ...themeVars.display.flexColumn,
+  flex: 1,
+  overflow: 'hidden',
   gap: '3.6rem',
 });
 
 export const header = style({
-  display: 'flex',
-  flexDirection: 'column',
+  ...themeVars.display.flexColumn,
   gap: '0.5rem',
 });
 
 export const titleRow = style({
+  ...themeVars.display.flexAlignCenter,
   position: 'relative',
-  display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
   height: '2.4rem',
 });
 
@@ -43,16 +42,15 @@ export const subTitle = style({
 });
 
 export const list = style({
-  display: 'flex',
-  flexDirection: 'column',
+  ...themeVars.display.flexColumn,
   borderRadius: '1rem',
-  overflow: 'hidden',
   boxShadow: '0px 0px 12px 0px rgba(0, 0, 0, 0.04)',
+  overflowY: 'auto',
+  flex: 1,
 });
 
 export const itemBase = {
-  display: 'flex',
-  alignItems: 'center',
+  ...themeVars.display.flexAlignCenter,
   padding: '1.2rem 2rem',
   backgroundColor: themeVars.color.gray100,
   cursor: 'pointer',
@@ -85,12 +83,11 @@ export const rightIcon = style({
 });
 
 export const label = style({
+  ...themeVars.display.flexAlignCenter,
   ...themeVars.fontStyles.body_14_medium,
   color: themeVars.color.gray700,
   height: '2.8rem',
-  display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
 });
 
 export const rightArrow = style({
