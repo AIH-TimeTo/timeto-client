@@ -21,13 +21,13 @@ interface McPaletteProps {
 const paletteOrder: (keyof typeof tbColorMap)[] = [
   'RED01',
   'PURPLE01',
-  'GREEN01',
   'BLUE01',
+  'GREEN01',
   'BROWN01',
   'RED02',
   'PURPLE02',
-  'GREEN02',
   'BLUE02',
+  'GREEN02',
   'BROWN02',
 ];
 
