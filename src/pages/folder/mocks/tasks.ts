@@ -22,14 +22,14 @@ export const mockTaskData = {
     },
     {
       taskName: '설문조사 설계',
-      level: 'MID' as TaskLevel,
+      level: 'MIDDLE' as TaskLevel,
       hour: 1,
       minute: 0,
       date: '미정',
     },
     {
       taskName: '타겟 분석',
-      level: 'MID' as TaskLevel,
+      level: 'MIDDLE' as TaskLevel,
       hour: 2,
       minute: 0,
       date: '미정',
