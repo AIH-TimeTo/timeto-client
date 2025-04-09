@@ -39,7 +39,7 @@ export default function TaskItem({
       }}
     >
       <div className={styles.levelBadge({ level, isDone })}>
-        {level === 'HIGH' ? '상' : level === 'MID' ? '중' : '하'}
+        {level === 'HIGH' ? '상' : level === 'MIDDLE' ? '중' : '하'}
       </div>
       <div className={styles.texts}>
         <p className={styles.taskName({ isDone })}>{taskName}</p>

@@ -1,5 +1,4 @@
-export type TaskLevel = 'HIGH' | 'MID' | 'LOW';
-import type { FbColorKey } from '@shared/utils/color-map';
+export type TaskLevel = 'HIGH' | 'MIDDLE' | 'LOW';
 
 export interface Task {
   taskName: string;
@@ -12,7 +11,7 @@ export interface Task {
 export interface TaskResponse {
   goalName: string;
   folderName: string;
-  color: FbColorKey;
+  color: string;
   progressCount: number;
   progressTasks: Task[];
   doneCount: number;

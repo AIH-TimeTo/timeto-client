@@ -37,7 +37,7 @@ export const levelBadge = recipe({
   variants: {
     level: {
       HIGH: { backgroundColor: themeVars.color.gray700 },
-      MID: { backgroundColor: themeVars.color.gray600 },
+      MIDDLE: { backgroundColor: themeVars.color.gray600 },
       LOW: { backgroundColor: themeVars.color.gray400 },
     },
     isDone: {
