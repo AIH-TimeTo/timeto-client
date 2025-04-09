@@ -55,7 +55,7 @@ export default function TaskGroup({
       <div
         className={styles.list}
         style={{
-          border: `2px solid ${tbColorMap[color]}`,
+          border: tasks.length > 0 ? `2px solid ${tbColorMap[color]}` : 'none',
         }}
       >
         {tasks.map((task, index) => (
