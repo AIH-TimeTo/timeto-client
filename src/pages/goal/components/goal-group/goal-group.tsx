@@ -14,19 +14,14 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { clsx } from 'clsx';
 
-import {
-  deleteGoal,
-  editGoalColor,
-  editGoalName,
-} from '@shared/apis/goal/goal';
 import { IcCommonKebab, IcGoalPinFill } from '@shared/assets/svgs';
 import { usePreventScrollWhileDragging } from '@shared/hooks/use-prevent-scroll-while-dragging';
 import { gfColorMap, parseToGfColorKey } from '@shared/utils/color-map';
 
 import { useGoalOptionModal } from '../../hooks/use-goal-option-modal';
+import { useEditGoalOption } from '../../hooks/use-goal-options';
 import { Folder, FolderColorType } from '../../types/goal';
 import FolderItem from '../folder-item/folder-item';
 import GoalDeleteModal from '../goal-delete-modal/goal-delete-modal';
@@ -70,42 +65,12 @@ export default function GoalGroup({
     setSelectedGoalName,
   } = useGoalOptionModal();
 
-  const queryClient = useQueryClient();
-
-  const { mutate: updateNameMutate } = useMutation({
-    mutationFn: editGoalName,
-    onSuccess: (data) => {
-      queryClient.invalidateQueries();
-      setSelectedGoalName(data.data.goalName);
-      closeModal();
-    },
-    onError: (err) => {
-      console.error('이름 변경 실패', err);
-    },
-  });
-
-  const { mutate: updateColorMutate } = useMutation({
-    mutationFn: editGoalColor,
-    onSuccess: (data) => {
-      queryClient.invalidateQueries();
-      setSelectedColor(data.data.color as FolderColorType);
-      closeModal();
-    },
-    onError: (err) => {
-      console.error('색상 변경 실패', err);
-    },
-  });
-
-  const { mutate: deleteGoalMutate } = useMutation({
-    mutationFn: deleteGoal,
-    onSuccess: () => {
-      queryClient.invalidateQueries();
-      closeModal();
-    },
-    onError: (err) => {
-      console.error('삭제 실패', err);
-    },
-  });
+  const { updateNameMutate, updateColorMutate, deleteGoalMutate } =
+    useEditGoalOption({
+      onClose: closeModal,
+      setSelectedGoalName,
+      setSelectedColor,
+    });
 
   useEffect(() => {
     setItems(folders);
@@ -114,10 +79,7 @@ export default function GoalGroup({
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: {
-        delay: 300,
-        tolerance: 5,
-      },
+      activationConstraint: { delay: 300, tolerance: 5 },
     }),
   );
 
@@ -191,7 +153,7 @@ export default function GoalGroup({
         </SortableContext>
 
         <DragOverlay>
-          {activeId ? (
+          {activeId && (
             <div
               style={{
                 transform: 'scale(1.02)',
@@ -208,11 +170,10 @@ export default function GoalGroup({
                 color={selectedColor}
               />
             </div>
-          ) : null}
+          )}
         </DragOverlay>
       </DndContext>
 
-      {/* 옵션 모달 */}
       {modalStep === 'option' && selectedGoalId === goalId && (
         <GoalOptionModal
           goalName={selectedGoalName}
@@ -223,37 +184,28 @@ export default function GoalGroup({
         />
       )}
 
-      {/* 이름 변경 모달 */}
       {modalStep === 'edit-name' && selectedGoalId === goalId && (
         <GoalNameEditModal
           defaultName={selectedGoalName}
           onClose={closeModal}
           onBack={goBack}
           onConfirm={(newName) => {
-            updateNameMutate({
-              goalId,
-              goalName: newName,
-            });
+            updateNameMutate({ goalId, goalName: newName });
           }}
         />
       )}
 
-      {/* 색상 변경 모달 */}
       {modalStep === 'edit-color' && selectedGoalId === goalId && (
         <GoalColorEditModal
           defaultColor={selectedColor}
           onClose={closeModal}
           onBack={goBack}
           onConfirm={(newColor) => {
-            updateColorMutate({
-              goalId,
-              color: newColor,
-            });
+            updateColorMutate({ goalId, color: newColor });
           }}
         />
       )}
 
-      {/* 삭제 확인 모달 */}
       {modalStep === 'delete' && selectedGoalId === goalId && (
         <GoalDeleteModal
           onClose={closeModal}
