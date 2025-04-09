@@ -4,6 +4,7 @@ import { themeVars } from '@shared/styles';
 
 export const pageWrapper = style({
   backgroundColor: themeVars.color.gray100,
+  minHeight: '100vh',
 });
 
 export const folderTitle = style({
@@ -11,7 +12,7 @@ export const folderTitle = style({
   color: themeVars.color.gray700,
 });
 
-export const backButton = style({
+export const HeaderButton = style({
   cursor: 'pointer',
 });
 
