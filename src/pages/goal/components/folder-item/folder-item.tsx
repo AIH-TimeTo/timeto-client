@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 
 import { IcGoalHamburger20 } from '@shared/assets/svgs';
-import { tbColorMap } from '@shared/utils/color-map';
+import { parseToTbColorKey, tbColorMap } from '@shared/utils/color-map';
 
 import * as styles from './folder-item.css';
 
@@ -28,6 +28,8 @@ export default function FolderItem({
   dragHandleProps,
   onClick,
 }: FolderItemProps) {
+  const backgroundColor = tbColorMap[parseToTbColorKey(color)];
+
   return (
     <div
       {...dragHandleProps}
@@ -38,7 +40,7 @@ export default function FolderItem({
         isLast && !isOnly && styles.last,
         !isFirst && !isOnly && styles.divider,
       )}
-      style={{ backgroundColor: tbColorMap[color] }}
+      style={{ backgroundColor }}
       onClick={onClick}
     >
       <div className={styles.row}>

@@ -42,3 +42,21 @@ export const fbColorMap = {
 export type TbColorKey = keyof typeof tbColorMap;
 export type GfColorKey = keyof typeof gfColorMap;
 export type FbColorKey = keyof typeof fbColorMap;
+
+export const parseToGfColorKey = (color: string): GfColorKey => {
+  return (
+    Object.keys(gfColorMap).includes(color) ? color : 'GREEN01'
+  ) as GfColorKey;
+};
+
+export const parseToTbColorKey = (color: string): TbColorKey => {
+  return (
+    Object.keys(tbColorMap).includes(color) ? color : 'GREEN01'
+  ) as TbColorKey;
+};
+
+export const parseToFbColorKey = (color: string): FbColorKey => {
+  return (
+    Object.keys(fbColorMap).includes(color) ? color : 'GREEN01'
+  ) as FbColorKey;
+};

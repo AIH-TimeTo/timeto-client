@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 
 import { IcCommonBack, IcPaletteCheck } from '@shared/assets/svgs';
-import { gfColorMap, tbColorMap } from '@shared/utils/color-map';
+import {
+  gfColorMap,
+  parseToGfColorKey,
+  parseToTbColorKey,
+  tbColorMap,
+} from '@shared/utils/color-map';
 
 import * as styles from './mc-palette.css';
 
@@ -67,24 +72,25 @@ export default function McPalette({
       </header>
 
       <div className={styles.grid}>
-        {paletteOrder.map((colorKey) => (
-          <button
-            key={colorKey}
-            className={styles.colorCircle}
-            style={{ backgroundColor: tbColorMap[colorKey] }}
-            onClick={() => handleSelect(colorKey)}
-          >
-            {selectedColor === colorKey && (
-              <IcPaletteCheck
-                width={16}
-                height={16}
-                style={{
-                  color: gfColorMap[colorKey],
-                }}
-              />
-            )}
-          </button>
-        ))}
+        {paletteOrder.map((rawColor) => {
+          const colorKey = parseToTbColorKey(rawColor);
+          return (
+            <button
+              key={colorKey}
+              className={styles.colorCircle}
+              style={{ backgroundColor: tbColorMap[colorKey] }}
+              onClick={() => handleSelect(colorKey)}
+            >
+              {selectedColor === colorKey && (
+                <IcPaletteCheck
+                  width={16}
+                  height={16}
+                  style={{ color: gfColorMap[parseToGfColorKey(colorKey)] }}
+                />
+              )}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

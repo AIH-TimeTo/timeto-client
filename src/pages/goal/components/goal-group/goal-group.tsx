@@ -24,7 +24,7 @@ import {
 } from '@shared/apis/goal/goal';
 import { IcCommonKebab, IcGoalPinFill } from '@shared/assets/svgs';
 import { usePreventScrollWhileDragging } from '@shared/hooks/use-prevent-scroll-while-dragging';
-import { gfColorMap } from '@shared/utils/color-map';
+import { gfColorMap, parseToGfColorKey } from '@shared/utils/color-map';
 
 import { useGoalOptionModal } from '../../hooks/use-goal-option-modal';
 import { Folder, FolderColorType } from '../../types/goal';
@@ -140,7 +140,7 @@ export default function GoalGroup({
           <IcGoalPinFill
             width={24}
             height={24}
-            style={{ color: gfColorMap[selectedColor] }}
+            style={{ color: gfColorMap[parseToGfColorKey(selectedColor)] }}
           />
           <h2 className={styles.title}>{goalName}</h2>
         </div>

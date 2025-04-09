@@ -11,7 +11,7 @@ import Header from '@shared/components/header/header';
 import McInput from '@shared/components/mc-input/mc-input';
 import McList from '@shared/components/mc-list/mc-list';
 import { ModalContainer } from '@shared/components/modal-container/modal-container';
-import { gfColorMap } from '@shared/utils/color-map';
+import { gfColorMap, parseToGfColorKey } from '@shared/utils/color-map';
 import { truncateText } from '@shared/utils/truncate-text';
 
 import AddGoalFlow from '../components/add-goal-flow/add-goal-flow';
@@ -113,7 +113,7 @@ export default function GoalPage() {
                 <IcGoalPinFill
                   width={24}
                   height={24}
-                  style={{ color: gfColorMap[goal.color] }}
+                  style={{ color: gfColorMap[parseToGfColorKey(goal.color)] }}
                 />
               ),
               showRightArrow: true,

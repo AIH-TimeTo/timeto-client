@@ -1,4 +1,9 @@
-import { fbColorMap, tbColorMap } from '@shared/utils/color-map';
+import {
+  fbColorMap,
+  parseToFbColorKey,
+  parseToTbColorKey,
+  tbColorMap,
+} from '@shared/utils/color-map';
 
 import { Task } from '../../types/task';
 
@@ -22,12 +27,15 @@ export default function TaskItem({
   const { taskName, level, hour, minute, date } = task;
   const time = `${hour ? `${hour}H` : ''} ${minute ? `${minute}M` : ''}`.trim();
 
+  const fbColor = fbColorMap[parseToFbColorKey(color)];
+  const tbColor = tbColorMap[parseToTbColorKey(color)];
+
   return (
     <div
       className={styles.wrapper({ isDone, isFirst })}
       style={{
-        borderTop: isFirst ? 'none' : `2px solid ${tbColorMap[color]}`,
-        backgroundColor: fbColorMap[color],
+        borderTop: isFirst ? 'none' : `2px solid ${tbColor}`,
+        backgroundColor: fbColor,
       }}
     >
       <div className={styles.levelBadge({ level, isDone })}>
