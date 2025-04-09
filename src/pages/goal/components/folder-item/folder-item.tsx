@@ -9,7 +9,7 @@ import * as styles from './folder-item.css';
 export interface FolderItemProps {
   folderName: string;
   taskCount: number;
-  color: keyof typeof tbColorMap;
+  color: string;
   isFirst?: boolean;
   isLast?: boolean;
   isOnly?: boolean;
