@@ -1,3 +1,4 @@
+export { default as BtnOnboardingGoogleLogin } from './BtnOnboardingGoogleLogin';
 export { default as IcCommonBack } from './IcCommonBack';
 export { default as IcCommonCalendar } from './IcCommonCalendar';
 export { default as IcCommonFolder } from './IcCommonFolder';
@@ -14,3 +15,4 @@ export { default as IcGoalHamburger20 } from './IcGoalHamburger20';
 export { default as IcGoalPinDefault24 } from './IcGoalPinDefault24';
 export { default as IcGoalPinFill } from './IcGoalPinFill';
 export { default as IcPaletteCheck } from './IcPaletteCheck';
+export { default as Logo } from './Logo';
