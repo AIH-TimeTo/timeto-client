@@ -28,7 +28,6 @@ export default function AddTaskFlow({
   const [step, setStep] = useState<Step>('input');
   const [taskName, setTaskName] = useState('');
   const [duration, setDuration] = useState({ hour: 0, minute: 0 });
-  const [level, setLevel] = useState<'HIGH' | 'MIDDLE' | 'LOW' | null>(null);
 
   const { mutate: createTask } = useCreateTask(folderId);
 
@@ -43,8 +42,6 @@ export default function AddTaskFlow({
   };
 
   const handleConfirmLevel = (selectedLevel: 'HIGH' | 'MIDDLE' | 'LOW') => {
-    setLevel(selectedLevel);
-
     const taskPayload = {
       folderId,
       taskName,
