@@ -1,6 +1,4 @@
-import type { GfColorKey } from '@shared/utils/color-map';
-
-export type FolderColorType = GfColorKey;
+export type FolderColorType = string;
 
 export interface Folder {
   id: number;

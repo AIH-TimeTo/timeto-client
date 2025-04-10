@@ -7,4 +7,9 @@ export const END_POINTS = {
 
   GET_FOLDERS: '/api/v1/folders',
   POST_FOLDER: '/api/v1/folders',
+  GET_FOLDER_DETAIL: (folderId: number) => `/api/v1/folders/${folderId}`,
+  PATCH_FOLDER_NAME: '/api/v1/folders/name',
+  DELETE_FOLDER: '/api/v1/folders',
+
+  POST_TASK: '/api/v1/tasks',
 };

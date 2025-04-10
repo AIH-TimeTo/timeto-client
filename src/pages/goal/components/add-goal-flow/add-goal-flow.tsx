@@ -1,11 +1,9 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-
-import { createGoal } from '@shared/apis/goal/goal';
-import { GOAL_QUERY_KEY } from '@shared/apis/goal/goal-queries';
 import McInput from '@shared/components/mc-input/mc-input';
 import McPalette from '@shared/components/mc-palette/mc-palette';
 import { ModalContainer } from '@shared/components/modal-container/modal-container';
 import { tbColorMap } from '@shared/utils/color-map';
+
+import { useCreateGoal } from '../../hooks/use-create-goal';
 
 interface AddGoalFlowProps {
   modalType: 'input-goal' | 'palette';
@@ -28,20 +26,7 @@ export default function AddGoalFlow({
   onNext,
   onClose,
 }: AddGoalFlowProps) {
-  const queryClient = useQueryClient();
-
-  const { mutate } = useMutation({
-    mutationFn: createGoal,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: GOAL_QUERY_KEY.LIST(),
-      });
-      onClose();
-    },
-    onError: (error) => {
-      console.error('목표 생성 실패', error);
-    },
-  });
+  const { mutate: createGoal } = useCreateGoal();
 
   if (modalType === 'input-goal') {
     return (
@@ -71,7 +56,8 @@ export default function AddGoalFlow({
           onBack={() => onBack('input-goal')}
           onConfirm={() => {
             if (!goalName || !goalColor) return;
-            mutate({ goalName, color: goalColor });
+            createGoal({ goalName, color: goalColor });
+            onClose();
           }}
         />
       </ModalContainer>
