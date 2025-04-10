@@ -26,3 +26,16 @@ export const taskSection = style({
   marginTop: '3.8rem',
   padding: '0 2rem',
 });
+
+export const emptySection = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '40vh',
+});
+
+export const emptyText = style({
+  ...themeVars.fontStyles.body_14_medium,
+  color: themeVars.color.gray600,
+});
