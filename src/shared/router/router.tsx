@@ -10,7 +10,7 @@ import {
   TaskEditPage,
   TaskPage,
 } from './lazy';
-// import { ProtectedRoute } from './protected-route';
+import { ProtectedRoute } from './protected-route';
 import RootRedirect from './root-direct';
 
 export default function Router() {
@@ -20,14 +20,14 @@ export default function Router() {
 
       <Route path={routePath.ONBOARDING} element={<OnboardingPage />} />
 
-      {/* <Route element={<ProtectedRoute protect />}> */}
-      <Route element={<GlobalLayout />}>
-        <Route path={routePath.GOAL} element={<GoalPage />} />
-        <Route path={routePath.FOLDER} element={<FolderPage />} />
-        <Route path={routePath.TASK} element={<TaskPage />} />
-        <Route path={routePath.TASK_EDIT} element={<TaskEditPage />} />
+      <Route element={<ProtectedRoute protect />}>
+        <Route element={<GlobalLayout />}>
+          <Route path={routePath.GOAL} element={<GoalPage />} />
+          <Route path={routePath.FOLDER} element={<FolderPage />} />
+          <Route path={routePath.TASK} element={<TaskPage />} />
+          <Route path={routePath.TASK_EDIT} element={<TaskEditPage />} />
+        </Route>
       </Route>
-      {/* </Route> */}
     </Routes>
   );
 }
