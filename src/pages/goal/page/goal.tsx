@@ -179,7 +179,7 @@ export default function GoalPage() {
         ))}
       </main>
       {renderModal()}
-      {isMenuOpen && <MenuModal onClose={() => setIsMenuOpen(false)} />}s
+      {isMenuOpen && <MenuModal onClose={() => setIsMenuOpen(false)} />}
     </>
   );
 }
