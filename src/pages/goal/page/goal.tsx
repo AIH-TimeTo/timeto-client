@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   IcCommonHamburger24,
@@ -24,6 +25,19 @@ import { mapGoalResponse } from '../utils/goal-mapper';
 import * as styles from './goal.css';
 
 export default function GoalPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const token = searchParams.get('token');
+
+    if (token) {
+      localStorage.setItem('accessToken', token);
+      navigate('/goal', { replace: true });
+    }
+  }, [location.search, navigate]);
+
   const {
     modalType,
     goalName,
