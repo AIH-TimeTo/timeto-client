@@ -12,4 +12,6 @@ export const END_POINTS = {
   DELETE_FOLDER: '/api/v1/folders',
 
   POST_TASK: '/api/v1/tasks',
+
+  GET_USER_INFO: '/api/v1/users',
 };
