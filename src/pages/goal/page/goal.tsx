@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   IcCommonHamburger24,
   IcCommonPlus,
@@ -6,6 +8,7 @@ import {
 import Header from '@shared/components/header/header';
 import McInput from '@shared/components/mc-input/mc-input';
 import McList from '@shared/components/mc-list/mc-list';
+import MenuModal from '@shared/components/menu/menu';
 import { ModalContainer } from '@shared/components/modal-container/modal-container';
 import { gfColorMap, parseToGfColorKey } from '@shared/utils/color-map';
 import { truncateText } from '@shared/utils/truncate-text';
@@ -43,6 +46,7 @@ export default function GoalPage() {
     resetFolderModal,
   } = useFolderModal();
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data, createFolder } = useGoalFolderList();
   const mappedGoals = data ? mapGoalResponse(data.data.goalsFoldersList) : [];
 
@@ -132,7 +136,7 @@ export default function GoalPage() {
                 { folderName: value, goalId: selectedGoalId },
                 {
                   onSuccess: () => {
-                    closeFolderModal(); // ✅ 여기서 직접 모달 닫기
+                    closeFolderModal();
                   },
                 },
               );
@@ -149,7 +153,10 @@ export default function GoalPage() {
     <>
       <Header
         leftSlot={
-          <div className={styles.iconButtonPadding}>
+          <div
+            onClick={() => setIsMenuOpen(true)}
+            className={styles.iconButtonPadding}
+          >
             <IcCommonHamburger24 height={14} />
           </div>
         }
@@ -160,7 +167,6 @@ export default function GoalPage() {
           </button>
         }
       />
-
       <main>
         {mappedGoals.map((group) => (
           <GoalGroup
@@ -172,8 +178,8 @@ export default function GoalPage() {
           />
         ))}
       </main>
-
       {renderModal()}
+      {isMenuOpen && <MenuModal onClose={() => setIsMenuOpen(false)} />}s
     </>
   );
 }

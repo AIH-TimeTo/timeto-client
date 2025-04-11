@@ -8,4 +8,5 @@ export const goalPageTitle = style({
 
 export const iconButtonPadding = style({
   padding: '0.6rem 0.4rem',
+  cursor: 'pointer',
 });

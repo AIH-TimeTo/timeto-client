@@ -36,6 +36,7 @@ globalStyle('*', {
 });
 
 export const rootStyle = style({
+  position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
