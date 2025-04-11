@@ -4,7 +4,7 @@ import { themeVars } from '@shared/styles';
 
 export const pageWrapper = style({
   backgroundColor: themeVars.color.gray100,
-  minHeight: '100vh',
+  minHeight: ' calc(var(--vh) * 100)',
 });
 
 export const folderTitle = style({

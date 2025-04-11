@@ -7,7 +7,7 @@ globalStyle(':root', {
   vars: {
     '--min-width': '375px',
     '--max-width': '430px',
-    '--height': '100dvh',
+    '--height': 'calc(var(--vh, 1vh) * 100)',
   },
 });
 
@@ -41,7 +41,7 @@ export const rootStyle = style({
   flexDirection: 'column',
   width: '100%',
   margin: '0 auto',
-  minHeight: '100dvh',
+  minHeight: 'var(--height)',
   minWidth: 'var(--min-width)',
   maxWidth: 'var(--max-width)',
   backgroundColor: themeVars.color.gray200,
