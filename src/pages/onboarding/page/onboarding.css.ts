@@ -5,7 +5,7 @@ import { themeVars } from '@shared/styles';
 export const wrapper = style({
   ...themeVars.display.flexAlignJustifyCenter,
   flexDirection: 'column',
-  height: '100vh',
+  height: ' calc(var(--vh) * 100)',
   padding: '0 2rem',
   backgroundColor: themeVars.color.gray100,
 });

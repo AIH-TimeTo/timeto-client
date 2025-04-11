@@ -7,7 +7,7 @@ export const backdrop = style({
   top: 0,
   left: 0,
   width: '100vw',
-  height: '100vh',
+  height: ' calc(var(--vh) * 100)',
   backgroundColor: 'rgba(0, 0, 0, 0.25)',
   justifyContent: 'center',
   ...themeVars.display.flexAlignCenter,
