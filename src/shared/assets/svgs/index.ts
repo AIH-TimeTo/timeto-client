@@ -14,5 +14,6 @@ export { default as IcFolderProgress } from './IcFolderProgress';
 export { default as IcGoalHamburger20 } from './IcGoalHamburger20';
 export { default as IcGoalPinDefault24 } from './IcGoalPinDefault24';
 export { default as IcGoalPinFill } from './IcGoalPinFill';
+export { default as IcMenuClose } from './IcMenuClose';
 export { default as IcPaletteCheck } from './IcPaletteCheck';
 export { default as Logo } from './Logo';
