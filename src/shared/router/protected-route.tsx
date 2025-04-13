@@ -1,15 +1,12 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import { routePath } from '@shared/constants/path';
-import { useUserInfo } from '@shared/hooks/use-user-info';
 
 export const ProtectedRoute = ({ protect = false }) => {
   const location = useLocation();
-  const { isLoading, data } = useUserInfo();
+  const accessToken = localStorage.getItem('accessToken');
 
-  if (isLoading) return null;
-
-  if (protect && !data) {
+  if (protect && !accessToken) {
     return (
       <Navigate to={routePath.ONBOARDING} state={{ from: location }} replace />
     );

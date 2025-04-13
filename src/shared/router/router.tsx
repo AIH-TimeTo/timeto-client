@@ -17,7 +17,6 @@ export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<RootRedirect />} />
-
       <Route path={routePath.ONBOARDING} element={<OnboardingPage />} />
 
       <Route element={<ProtectedRoute protect />}>
