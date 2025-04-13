@@ -16,6 +16,7 @@ interface TaskItemProps {
   isFirst?: boolean;
   isLast?: boolean;
   isOnly?: boolean;
+  onClick?: () => void;
 }
 
 export default function TaskItem({
@@ -23,6 +24,7 @@ export default function TaskItem({
   isDone = false,
   color,
   isFirst = false,
+  onClick,
 }: TaskItemProps) {
   const { taskName, level, hour, minute, date } = task;
   const time = `${hour ? `${hour}H` : ''} ${minute ? `${minute}M` : ''}`.trim();
@@ -37,6 +39,7 @@ export default function TaskItem({
         borderTop: isFirst ? 'none' : `2px solid ${tbColor}`,
         backgroundColor: fbColor,
       }}
+      onClick={onClick}
     >
       <div className={styles.levelBadge({ level, isDone })}>
         {level === 'HIGH' ? '상' : level === 'MIDDLE' ? '중' : '하'}

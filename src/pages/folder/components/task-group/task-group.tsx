@@ -1,5 +1,5 @@
 import {
-  IcCommonPlus, // ✅ 추가
+  IcCommonPlus,
   IcFolderComplete,
   IcFolderProgress,
 } from '@shared/assets/svgs';
@@ -18,6 +18,7 @@ interface TaskGroupProps {
   isDone?: boolean;
   showAddButton?: boolean;
   onAddClick?: () => void;
+  onClickTask?: (taskId: number) => void;
 }
 
 export default function TaskGroup({
@@ -28,6 +29,7 @@ export default function TaskGroup({
   isDone = false,
   showAddButton = false,
   onAddClick,
+  onClickTask,
 }: TaskGroupProps) {
   const isOnly = tasks.length === 1;
 
@@ -60,13 +62,14 @@ export default function TaskGroup({
       >
         {tasks.map((task, index) => (
           <TaskItem
-            key={index}
+            key={task.taskId}
             task={task}
             isDone={isDone}
             color={color}
             isOnly={isOnly}
             isFirst={index === 0}
             isLast={index === tasks.length - 1}
+            onClick={() => onClickTask?.(task.taskId)}
           />
         ))}
       </div>

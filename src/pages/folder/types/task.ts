@@ -1,6 +1,7 @@
 export type TaskLevel = 'HIGH' | 'MIDDLE' | 'LOW';
 
 export interface Task {
+  taskId: number;
   taskName: string;
   level: TaskLevel;
   hour: number;

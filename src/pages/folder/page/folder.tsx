@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import TaskGroup from '@pages/folder/components/task-group/task-group';
 import { IcCommonBack, IcCommonKebab } from '@shared/assets/svgs';
 import Header from '@shared/components/header/header';
+import { routePath } from '@shared/constants/path';
 import {
   gfColorMap,
   parseToGfColorKey,
@@ -100,6 +101,9 @@ export default function FolderPage() {
           color={parsedTbColor}
           showAddButton
           onAddClick={() => setIsAddTaskOpen(true)}
+          onClickTask={(taskId) =>
+            navigate(routePath.TASK.replace(':taskId', String(taskId)))
+          }
         />
 
         {doneTasks.length > 0 && (
@@ -109,6 +113,9 @@ export default function FolderPage() {
             count={doneCount}
             isDone
             color={parsedTbColor}
+            onClickTask={(taskId) =>
+              navigate(routePath.TASK.replace(':taskId', String(taskId)))
+            }
           />
         )}
 

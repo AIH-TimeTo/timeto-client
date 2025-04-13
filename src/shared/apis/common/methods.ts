@@ -30,3 +30,11 @@ export const apiDelete = async <TResponse>(url: string): Promise<TResponse> => {
   const response = await axiosInstance.delete<TResponse>(url);
   return response.data;
 };
+
+export const apiPut = async <TResponse, TBody = undefined>(
+  url: string,
+  body?: TBody,
+): Promise<TResponse> => {
+  const response = await axiosInstance.put<TResponse>(url, body);
+  return response.data;
+};

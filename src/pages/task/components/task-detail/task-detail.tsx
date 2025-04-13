@@ -1,8 +1,9 @@
-// components/task-detail.tsx
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { gfColorMap } from '@shared/utils/color-map';
 
+import { useCompleteTask } from '../../hooks/use-complete-task';
 import TaskEditTimeModal from '../task-edit-time-modal/task-edit-time-modal';
 
 import * as styles from './task-detail.css';
@@ -11,12 +12,19 @@ interface TaskDetailProps {
   isEdit: boolean;
   taskName: string;
   goalName: string;
-  hour: string;
-  minute: string;
+  hour: number;
+  minute: number;
   level: string;
   memo: string;
+  done?: boolean;
   color: keyof typeof gfColorMap;
-  onSubmit?: () => void;
+  onSubmit?: (data: {
+    task: string;
+    hour: number;
+    minute: number;
+    level: '상' | '중' | '하';
+    memo: string;
+  }) => void;
 }
 
 export default function TaskDetail({
@@ -27,32 +35,50 @@ export default function TaskDetail({
   level,
   memo,
   onSubmit,
+  done,
 }: TaskDetailProps) {
   const [task, setTask] = useState(taskName);
-  const [inputHour, setInputHour] = useState(Number(hour));
-  const [inputMinute, setInputMinute] = useState(Number(minute));
+  const [inputHour, setInputHour] = useState(hour);
+  const [inputMinute, setInputMinute] = useState(minute);
   const [selectedLevel, setSelectedLevel] = useState(level);
   const [memoText, setMemoText] = useState(memo);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isTimeModalOpen, setIsTimeModalOpen] = useState(false);
+  const [isChanged, setIsChanged] = useState(false);
+
+  const { taskId } = useParams();
+  const { mutate: completeTaskMutate } = useCompleteTask();
+
   const formatTimeUnit = (value: number) => value.toString().padStart(2, '0');
 
+  useEffect(() => {
+    const isSame =
+      task === taskName &&
+      inputHour === hour &&
+      inputMinute === minute &&
+      selectedLevel === level &&
+      memoText === memo;
+    setIsChanged(!isSame);
+  }, [task, inputHour, inputMinute, selectedLevel, memoText]);
+
   const handleClick = () => {
-    if (isEdit) {
-      onSubmit?.();
-    } else {
-      setIsSubmitting(true);
-      setTimeout(() => {
-        alert('할 일이 완료되었습니다!');
-        setIsSubmitting(false);
-      }, 1000);
+    if (isEdit && isChanged) {
+      onSubmit?.({
+        task,
+        hour: inputHour,
+        minute: inputMinute,
+        level: selectedLevel as '상' | '중' | '하',
+        memo: memoText,
+      });
+    }
+
+    if (!isEdit && taskId) {
+      completeTaskMutate(Number(taskId));
     }
   };
 
   return (
     <div className={styles.detailWrapper}>
       <section className={styles.fieldGroup}>
-        {/* 할 일 */}
         <FieldLabel label="할 일" />
         {isEdit ? (
           <input
@@ -64,7 +90,6 @@ export default function TaskDetail({
           <p className={styles.textField}>{task}</p>
         )}
 
-        {/* 소요 시간 */}
         <FieldLabel label="예상 소요 시간" />
         {isEdit ? (
           <div className={styles.timeGroup}>
@@ -77,7 +102,7 @@ export default function TaskDetail({
             <span className={styles.timeUnit}>H</span>
             <input
               className={styles.timeInput}
-              value={inputMinute}
+              value={formatTimeUnit(inputMinute)}
               readOnly
               onClick={() => setIsTimeModalOpen(true)}
             />
@@ -89,7 +114,6 @@ export default function TaskDetail({
           </p>
         )}
 
-        {/* 중요도 */}
         <FieldLabel label="중요도" />
         {isEdit ? (
           <div className={styles.levelGroup}>
@@ -110,7 +134,6 @@ export default function TaskDetail({
           <p className={styles.textField}>{selectedLevel}</p>
         )}
 
-        {/* 메모 */}
         <FieldLabel label="메모" />
         {isEdit ? (
           <textarea
@@ -126,18 +149,16 @@ export default function TaskDetail({
         )}
       </section>
 
-      {/* 완료 or 저장 버튼 */}
       <div className={styles.fixedFooter}>
         <button
           className={styles.submitButton}
           onClick={handleClick}
-          disabled={isSubmitting}
+          disabled={(isEdit && !isChanged) || (!isEdit && done)}
         >
           {isEdit ? '저장' : '완료'}
         </button>
       </div>
 
-      {/* 소요 시간 모달 */}
       {isEdit && isTimeModalOpen && (
         <TaskEditTimeModal
           onClose={() => setIsTimeModalOpen(false)}

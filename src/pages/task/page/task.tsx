@@ -2,23 +2,20 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { IcCommonBack, IcCommonKebab } from '@shared/assets/svgs';
 import Header from '@shared/components/header/header';
-import { gfColorMap } from '@shared/utils/color-map';
+import { gfColorMap, parseToGfColorKey } from '@shared/utils/color-map';
 
 import TaskDeleteModal from '../components/task-delete-modal/task-delete-modal';
 import TaskDetail from '../components/task-detail/task-detail';
 import TaskOptionModal from '../components/task-option-modal/task-option-modal';
+import { useTaskDetail } from '../hooks/use-task-detail';
 import { useTaskOptionModal } from '../hooks/use-task-option-modal';
+import { useTaskOptions } from '../hooks/use-task-options';
 
 import * as styles from './task.css';
 
 export default function TaskPage() {
   const navigate = useNavigate();
-  const { taskId } = useParams(); // 수정 페이지 이동 시 필요
-
-  // TODO: 추후 조회 API 연결해서 받아올 값
-  const taskName = '경쟁사 캠페인 비교';
-  const goalName = '자료 조사';
-  const gfColor = 'GREEN01';
+  const { taskId } = useParams();
 
   const {
     modalStep,
@@ -28,6 +25,9 @@ export default function TaskPage() {
     openDeleteModal,
     closeModal,
   } = useTaskOptionModal();
+
+  const { data, isLoading, isError } = useTaskDetail(taskId);
+  const { deleteTaskMutate } = useTaskOptions();
 
   const handleGoBack = () => {
     navigate(-1);
@@ -39,15 +39,27 @@ export default function TaskPage() {
   };
 
   const handleDelete = () => {
-    // TODO: 삭제 API 호출 후 이동
-    alert('삭제되었습니다!');
-    closeModal();
-    navigate(-1);
+    if (!taskId) return;
+
+    deleteTaskMutate(Number(taskId), {
+      onSuccess: (res) => {
+        const folderId = res.data.folderId;
+        closeModal();
+        navigate(`/folder/${folderId}`);
+      },
+    });
   };
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError || !data) return <div>에러 발생</div>;
+
+  const { taskName, goalName, color, hour, minute, memo, level, done } =
+    data.data;
+  const gfColor = parseToGfColorKey(color);
 
   return (
     <div className={styles.pageWrapper}>
-      {/* 📌 헤더 */}
+      {/* 헤더 */}
       <Header
         leftSlot={
           <IcCommonBack
@@ -68,24 +80,25 @@ export default function TaskPage() {
         }
       />
 
-      {/* 📌 목표명 */}
+      {/* 목표명 */}
       <p className={styles.goalName} style={{ color: gfColorMap[gfColor] }}>
         {goalName}
       </p>
 
-      {/* 📌 상세 정보 */}
+      {/* 상세 정보 */}
       <TaskDetail
         isEdit={false}
         taskName={taskName}
         goalName={goalName}
-        hour="01"
-        minute="30"
-        level="상"
-        memo=""
+        hour={hour}
+        minute={minute}
+        level={level === 'HIGH' ? '상' : level === 'MIDDLE' ? '중' : '하'}
+        memo={memo || ''}
         color={gfColor}
+        done={done}
       />
 
-      {/* 📌 옵션 모달 */}
+      {/* 옵션 모달 */}
       {modalStep === 'option' && selectedTaskId === Number(taskId) && (
         <TaskOptionModal
           taskName={selectedTaskName}
@@ -95,7 +108,7 @@ export default function TaskPage() {
         />
       )}
 
-      {/* 📌 삭제 확인 모달 */}
+      {/* 삭제 확인 모달 */}
       {modalStep === 'delete' && selectedTaskId === Number(taskId) && (
         <TaskDeleteModal onClose={closeModal} onConfirm={handleDelete} />
       )}

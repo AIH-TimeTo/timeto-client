@@ -1,12 +1,14 @@
-// pages/task/page/task-edit.tsx
 import { useNavigate, useParams } from 'react-router-dom';
 import clsx from 'clsx';
 
 import { IcCommonBack } from '@shared/assets/svgs';
 import Header from '@shared/components/header/header';
-import { gfColorMap } from '@shared/utils/color-map';
+import { gfColorMap, parseToGfColorKey } from '@shared/utils/color-map';
 
 import TaskDetail from '../components/task-detail/task-detail';
+import { useTaskDetail } from '../hooks/use-task-detail';
+import { useTaskOptions } from '../hooks/use-task-options';
+import { convertLevelToServer } from '../utils/level-map';
 
 import * as styles from './task.css';
 
@@ -14,14 +16,18 @@ export default function TaskEditPage() {
   const { taskId } = useParams();
   const navigate = useNavigate();
 
-  // TODO: 추후 API 연결 시 불러올 값
-  const taskName = '경쟁사 캠페인 비교';
-  const goalName = '자료 조사';
-  const gfColor = 'GREEN01';
+  const { data, isLoading, isError } = useTaskDetail(taskId);
+  const { updateTaskMutate } = useTaskOptions();
 
   const handleGoBack = () => {
     navigate(-1);
   };
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError || !data) return <div>에러 발생</div>;
+
+  const { taskName, goalName, color, hour, minute, memo, level } = data.data;
+  const gfColor = parseToGfColorKey(color);
 
   return (
     <div className={clsx(styles.pageWrapper, styles.editBackground)}>
@@ -35,7 +41,7 @@ export default function TaskEditPage() {
           />
         }
         centerSlot={<h1 className={styles.folderTitle}>{taskName}</h1>}
-        rightSlot={null} // ✅ 수정 페이지는 케밥 없음
+        rightSlot={null}
       />
 
       <p className={styles.goalName} style={{ color: gfColorMap[gfColor] }}>
@@ -46,13 +52,20 @@ export default function TaskEditPage() {
         isEdit={true}
         taskName={taskName}
         goalName={goalName}
-        hour="01"
-        minute="30"
-        level="상"
-        memo="이전 캠페인 분석 필요"
+        hour={hour}
+        minute={minute}
+        level={level === 'HIGH' ? '상' : level === 'MIDDLE' ? '중' : '하'}
+        memo={memo || ''}
         color={gfColor}
-        onSubmit={() => {
-          navigate(`/task/${taskId}`); // 저장 후 조회 페이지로 이동
+        onSubmit={({ task, hour, minute, level, memo }) => {
+          updateTaskMutate({
+            taskId: Number(taskId),
+            taskName: task,
+            hour,
+            minute,
+            level: convertLevelToServer(level as '상' | '중' | '하'),
+            memo,
+          });
         }}
       />
     </div>

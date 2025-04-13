@@ -11,7 +11,10 @@ export const END_POINTS = {
   PATCH_FOLDER_NAME: '/api/v1/folders/name',
   DELETE_FOLDER: '/api/v1/folders',
 
+  GET_TASK_DETAIL: (taskId: number) => `/api/v1/tasks/${taskId}`,
   POST_TASK: '/api/v1/tasks',
+  PATCH_TASK: '/api/v1/tasks',
+  PATCH_TASK_DONE: (taskId: number) => `/api/v1/tasks/done/${taskId}`,
 
   GET_USER_INFO: '/api/v1/users',
 };

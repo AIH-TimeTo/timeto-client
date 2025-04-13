@@ -6,3 +6,12 @@ export interface CreateTaskRequest {
   level: 'HIGH' | 'MIDDLE' | 'LOW';
   memo?: string;
 }
+
+export interface UpdateTaskRequest {
+  taskId: number;
+  taskName: string;
+  hour: number;
+  minute: number;
+  level: 'HIGH' | 'MIDDLE' | 'LOW';
+  memo?: string;
+}

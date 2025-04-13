@@ -1,4 +1,3 @@
-// hooks/use-task-option-modal.ts
 import { useState } from 'react';
 
 export type TaskModalStep = 'option' | 'delete';
@@ -14,7 +13,10 @@ export const useTaskOptionModal = () => {
     setModalStep('option');
   };
 
-  const openDeleteModal = () => setModalStep('delete');
+  const openDeleteModal = () => {
+    console.log('✅ openDeleteModal 실행됨');
+    setModalStep('delete');
+  };
 
   const goBack = () => setModalStep('option');
   const closeModal = () => setModalStep(null);
