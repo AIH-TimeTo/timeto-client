@@ -168,15 +168,19 @@ export default function GoalPage() {
         }
       />
       <main>
-        {mappedGoals.map((group) => (
-          <GoalGroup
-            key={group.goalName}
-            goalId={group.goalId}
-            goalName={group.goalName}
-            color={group.color}
-            folders={group.folders}
-          />
-        ))}
+        {mappedGoals.length === 0 ? (
+          <p className={styles.emptyMessage}>내 목표를 생성하세요.</p>
+        ) : (
+          mappedGoals.map((group) => (
+            <GoalGroup
+              key={group.goalName}
+              goalId={group.goalId}
+              goalName={group.goalName}
+              color={group.color}
+              folders={group.folders}
+            />
+          ))
+        )}
       </main>
       {renderModal()}
       {isMenuOpen && <MenuModal onClose={() => setIsMenuOpen(false)} />}
