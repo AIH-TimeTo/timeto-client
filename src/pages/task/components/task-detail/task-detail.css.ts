@@ -8,6 +8,7 @@ export const detailWrapper = style({
   padding: '0 2rem',
   marginTop: '4rem',
   gap: '2.4rem',
+  paddingBottom: '13rem',
 });
 
 export const fieldGroup = style({
@@ -156,7 +157,7 @@ export const submitButton = style({
 
 export const fixedFooter = style({
   position: 'fixed',
-  bottom: '3.6rem',
+  bottom: '1rem',
   left: '50%',
   transform: 'translateX(-50%)',
   width: '100%',

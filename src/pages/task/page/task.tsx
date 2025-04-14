@@ -30,7 +30,9 @@ export default function TaskPage() {
   const { deleteTaskMutate } = useTaskOptions();
 
   const handleGoBack = () => {
-    navigate(-1);
+    if (!data) return;
+    const folderId = data.data.folderId;
+    navigate(`/folder/${folderId}`);
   };
 
   const handleEdit = () => {

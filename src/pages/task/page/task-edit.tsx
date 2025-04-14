@@ -20,7 +20,9 @@ export default function TaskEditPage() {
   const { updateTaskMutate } = useTaskOptions();
 
   const handleGoBack = () => {
-    navigate(-1);
+    if (!data) return;
+    const folderId = data.data.folderId;
+    navigate(`/folder/${folderId}`);
   };
 
   if (isLoading) return <div>로딩 중...</div>;
