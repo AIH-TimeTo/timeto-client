@@ -94,3 +94,8 @@ export const rightArrow = style({
   color: themeVars.color.gray600,
   transform: 'rotate(180deg)',
 });
+
+export const itemSingle = style({
+  ...itemBase,
+  borderRadius: '1rem',
+});

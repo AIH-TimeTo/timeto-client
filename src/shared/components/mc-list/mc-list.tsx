@@ -48,13 +48,17 @@ export default function McList({
       <ul className={styles.list}>
         {items.map(
           ({ id, label, leftIcon, showRightArrow, labelColor }, index) => {
+            const isSingle = items.length === 1;
             const isFirst = index === 0;
             const isLast = index === items.length - 1;
-            const itemClass = isFirst
-              ? styles.itemTop
-              : isLast
-                ? styles.itemBottom
-                : styles.item;
+
+            const itemClass = isSingle
+              ? styles.itemSingle
+              : isFirst
+                ? styles.itemTop
+                : isLast
+                  ? styles.itemBottom
+                  : styles.item;
 
             return (
               <li
