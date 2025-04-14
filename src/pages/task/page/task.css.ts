@@ -17,6 +17,10 @@ export const HeaderButton = style({
 export const folderTitle = style({
   ...themeVars.fontStyles.head_20_semibold,
   color: themeVars.color.gray700,
+  maxWidth: '25rem',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 });
 
 export const goalName = style({

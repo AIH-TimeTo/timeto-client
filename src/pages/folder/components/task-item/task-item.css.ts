@@ -59,6 +59,10 @@ export const taskName = recipe({
   base: {
     ...themeVars.fontStyles.title_16_medium,
     color: themeVars.color.gray700,
+    maxWidth: '18rem',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   variants: {
     isDone: {
