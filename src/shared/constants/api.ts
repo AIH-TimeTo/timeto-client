@@ -17,4 +17,6 @@ export const END_POINTS = {
   PATCH_TASK_DONE: (taskId: number) => `/api/v1/tasks/done/${taskId}`,
 
   GET_USER_INFO: '/api/v1/users',
+  POST_USER_LOGOUT: '/api/v1/users/logout',
+  DELETE_USER: '/api/v1/users/deactivate',
 };

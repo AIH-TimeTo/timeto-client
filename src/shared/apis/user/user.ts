@@ -2,7 +2,7 @@ import { END_POINTS } from '@shared/constants/api';
 import { GetUserInfoResponse } from '@shared/types/user-response';
 import { handleAuthError } from '@shared/utils/handle-axios-error';
 
-import { apiGet } from '../common/methods';
+import { apiDelete, apiGet, apiPost } from '../common/methods';
 
 export const fetchUserInfo = async () => {
   try {
@@ -11,4 +11,12 @@ export const fetchUserInfo = async () => {
     handleAuthError(error);
     throw error;
   }
+};
+
+export const logoutUser = () => {
+  return apiPost(END_POINTS.POST_USER_LOGOUT);
+};
+
+export const deleteUser = () => {
+  return apiDelete(END_POINTS.DELETE_USER);
 };

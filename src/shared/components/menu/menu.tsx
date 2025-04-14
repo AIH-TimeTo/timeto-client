@@ -1,5 +1,9 @@
+import { useNavigate } from 'react-router-dom';
+
 import { IcMenuClose } from '@shared/assets/svgs';
 import { routePath } from '@shared/constants/path';
+import { useDeleteUser } from '@shared/hooks/use-delete-user';
+import { useLogout } from '@shared/hooks/use-logout';
 import { useNavigateWithClose } from '@shared/hooks/use-navigate-with-close';
 import { usePreventScrollWhileModal } from '@shared/hooks/use-prevent-scroll-while-modal';
 import { useUserInfo } from '@shared/hooks/use-user-info';
@@ -15,6 +19,34 @@ export default function MenuModal({ onClose }: MenuModalProps) {
 
   const { data: user } = useUserInfo();
   const navigateWithClose = useNavigateWithClose(onClose);
+
+  const navigate = useNavigate();
+  const { mutate: logoutMutate } = useLogout();
+  const { mutate: deleteUserMutate } = useDeleteUser();
+
+  const handleLogout = () => {
+    logoutMutate(undefined, {
+      onSuccess: () => {
+        localStorage.removeItem('accessToken');
+        navigate('/login');
+      },
+      onError: (error) => {
+        console.error('로그아웃 실패:', error);
+      },
+    });
+  };
+
+  const handleDeleteUser = () => {
+    deleteUserMutate(undefined, {
+      onSuccess: () => {
+        localStorage.removeItem('accessToken');
+        navigate('/login');
+      },
+      onError: (err) => {
+        console.error('회원 탈퇴 실패:', err);
+      },
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -51,8 +83,13 @@ export default function MenuModal({ onClose }: MenuModalProps) {
       </div>
 
       <div className={styles.bottomMenu}>
-        <button className={styles.bottomButton}>로그아웃</button>
-        <button className={`${styles.bottomButton} ${styles.danger}`}>
+        <button className={styles.bottomButton} onClick={handleLogout}>
+          로그아웃
+        </button>
+        <button
+          className={`${styles.bottomButton} ${styles.danger}`}
+          onClick={handleDeleteUser}
+        >
           회원탈퇴
         </button>
       </div>
